@@ -1,6 +1,7 @@
 # Introduction
 In today's software landscapes multiple development stacks for different components are nothing unusal. So technologies are necessary to create sound 
-bridges, to connect those components (feel free to add random BS here, how wonderful micro services are...). 
+bridges, to connect those components (feel free to add random BS here, how wonderful micro services are...).
+In order to provide an interesting example use case, some function from Sweden's TrafikVerket API is being used. API doc can be found here: https://api.trafikinfo.trafikverket.se/API/Model
 
 # Goal of this repo
 This is an educational repo showing how to use ProtoBuf and gRPC. So no production use is intended. If you want to use it, you'll do so without 
