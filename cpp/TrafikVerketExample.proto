@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package trafikverket;
+
+import "google/protobuf/timestamp.proto";
+
+message WeatherMeasurepoint {
+    string name = 1;
+    int32 id = 2;
+    double Observation_Air_Temperature = 3;
+    google.protobuf.Timestamp last_update = 4;
+}
+
+message WeatherMeasurepointList {
+    repeated WeatherMeasurepoint points = 1;
+}
+
+message WeatherMeasurepointRequest {
+    repeated int32 ids = 1;
+}
+
+service WeatherService {
+    // delivers WeatherMeasurePoints for given list of ids
+    rpc GetWeatherMeasurepoint(WeatherMeasurepointRequest) returns (WeatherMeasurepointList) {}
+}

@@ -11,6 +11,17 @@ any warranty. It's goal is to demonstrate how to use these technologies to let c
 Client is written in C++ and server in Python. 
 
 ## Build and run Python part
-TODO
+Generate gRPC & ProtoBuf
+
+    python3 -m grpc_tools.protoc -I. --python_out=python/ --grpc_python_out=python/ TrafikVerketExample.proto
+
+Run server
+
+    python3 sampleServer.py
+
+Run client
+
+    python3 sampleClient.py 
+    
 ## Build and run C++ part
 TODO
