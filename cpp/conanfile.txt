@@ -1,9 +1,13 @@
 [build_requires]
-protobuf/3.21.1
+protobuf/3.21.4
 
 [requires]
-protobuf/3.21.1
+protobuf/3.21.4
 grpc/1.47.1
 
 [generators]
 cmake
+
+[imports]
+bin, protoc* -> ./build_tools
+bin, grpc_cpp_plugin* -> ./build_tools
