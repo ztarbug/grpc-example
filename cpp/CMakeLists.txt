@@ -4,15 +4,19 @@ project(sample LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-#set(CMAKE_VERBOSE_MAKEFILE ON)
+set(CMAKE_VERBOSE_MAKEFILE ON)
 
 # this block shall locate protoc binary shipped with Conan dependency to prevent
 # version problems, if protoc is installed on your system.
 set(CONAN_PROTO_PACKAGE_DIR $ENV{HOME}/.conan/data/protobuf/3.21.1/)
 set(FIND_COMMAND "find ${CONAN_PROTO_PACKAGE_DIR} -name protoc ! -type d | grep package")
 execute_process(COMMAND bash "-c" "${FIND_COMMAND}" OUTPUT_VARIABLE MY_PROTO_COMPILER)
+#set(PROTOC_COMP ${CMAKE_CURRENT_SOURCE_DIR}/build/build_tools/protoc)
+message(STATUS ${MY_PROTO_COMPILER})
+#set(Protobuf_PROTOC_EXECUTABLE ${PROTOC_COMP} CACHE FILEPATH "The protoc compiler")
 set(Protobuf_PROTOC_EXECUTABLE ${MY_PROTO_COMPILER} CACHE FILEPATH "The protoc compiler")
 
+include(FindProtobuf)
 find_package(Protobuf REQUIRED)
 find_package(gRPC CONFIG REQUIRED)
 

@@ -19,7 +19,25 @@ message WeatherMeasurepointRequest {
     repeated int32 ids = 1;
 }
 
+message AddWeatherMeasurepointResponse {
+    bool sucessful = 1;
+}
+
+message CameraRequest {
+    int32 id = 1;
+}
+
+message CameraResponse {
+    bytes image = 1;
+}
+
 service WeatherService {
     // delivers WeatherMeasurePoints for given list of ids
-    rpc GetWeatherMeasurepoint(WeatherMeasurepointRequest) returns (WeatherMeasurepointList) {}
+    rpc GetWeatherMeasurepoint(WeatherMeasurepointRequest) returns (WeatherMeasurepointList);
+
+    // adds a new set of measurements
+    rpc AddWeatherMeasurepoint(WeatherMeasurepointList) returns (AddWeatherMeasurepointResponse);
+
+    // gets details and latest image from camera with id
+    rpc GetCameraData(CameraRequest) returns (CameraResponse);
 }

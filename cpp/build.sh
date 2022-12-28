@@ -8,5 +8,5 @@ mkdir build
 cd build
 
 conan install .. --build=missing
-cmake .. -DCMAKE_BUILD_TYPE=Release
+cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=OFF -DBUILD_EXAMPLES=OFF
 cmake --build .

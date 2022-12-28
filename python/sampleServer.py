@@ -3,6 +3,7 @@ import logging
 import grpc
 from google.protobuf.timestamp_pb2 import Timestamp
 import pprint
+import base64
 
 import TrafikVerketExample_pb2
 import TrafikVerketExample_pb2_grpc
@@ -14,7 +15,7 @@ class WeatherServiceServicer(TrafikVerketExample_pb2_grpc.WeatherServiceServicer
 
 
     def GetWeatherMeasurepoint(self, request, context):
-        print("server called")
+        print("GetWeatherMeasurepoint called")
         pprint.pprint(request.ids)
         context.set_code(grpc.StatusCode.OK)
         context.set_details('Executed')
@@ -26,6 +27,27 @@ class WeatherServiceServicer(TrafikVerketExample_pb2_grpc.WeatherServiceServicer
         wmpList.append(wmp2)
         
         return TrafikVerketExample_pb2.WeatherMeasurepointList(points = wmpList)
+
+    def AddWeatherMeasurepoint(self, request, context):
+        print("AddWeatherMeasurepoint called")
+        pprint.pprint(request.points)
+        context.set_code(grpc.StatusCode.OK)
+        context.set_details('Executed')
+
+        return TrafikVerketExample_pb2.AddWeatherMeasurepointResponse(successful = 1)
+    
+    def GetCameraData(self, request, context):
+        print("GetCameraData called")
+        pprint.pprint(request.id)
+
+        imageFile = open("../resources/FOSDEM_logo.svg.png", "rb") 
+        str = base64.b64encode(imageFile.read())
+
+        context.set_code(grpc.StatusCode.OK)
+        context.set_details('Executed')
+
+        return TrafikVerketExample_pb2.CameraResponse(image = str)
+        
 
 
 def serve():
