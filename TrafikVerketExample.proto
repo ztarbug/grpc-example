@@ -4,6 +4,8 @@ package trafikverket;
 
 import "google/protobuf/timestamp.proto";
 
+option csharp_namespace = "Grpcsample";
+
 message WeatherMeasurepoint {
     string name = 1;
     int32 id = 2;

@@ -14,6 +14,8 @@ This repo contains so far clients in Python, Rust and C++. To keep things easy s
 
 ## Build and run Python part
 
+If you are familiar with virtual environments, it is highly recommended to use those.
+
 Installation
 * python3 -m pip install --user grpcio-tools
 
@@ -57,3 +59,8 @@ With CMake it is convention, to create a folder build in which all action takes 
 * conan install .. --build=missing
 * cmake .. -DCMAKE_BUILD_TYPE=Release
 * cmake --build .
+
+## Build and run C# part
+Install DotNet SDK on your selected operating system. All necessary dependencies are already in project config file. To build and run just enter folder dotnet/grpc-sample and use dotnet commend:
+
+    dotnet run
